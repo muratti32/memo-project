@@ -6,8 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPost } from 'components/Posts/thunk';
 
 const Form = () => {
-  console.log(`halo asdf asdfas:`);
-
   const classes = useStyles();
   const dispatch = useDispatch();
   const [postData, setPostData] = useState({
