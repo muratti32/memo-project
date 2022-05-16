@@ -6,11 +6,12 @@ import Post from './Post/Post';
 import useStyles from './styles';
 import { getPosts } from './thunk';
 
-const Posts = () => {
+const Posts = ({ setSelectedPostId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const postList = useSelector(posts.postList);
 
+  console.log(`halo postList:`, postList);
   useEffect(() => {
     dispatch(getPosts('halo'));
   }, [dispatch]);
@@ -27,7 +28,7 @@ const Posts = () => {
           spacing={3}>
           {postList.map((post) => (
             <Grid item key={post._id} xs={12} sm={6} md={6}>
-              <Post post={post} />
+              <Post post={post} setSelectedPostId={setSelectedPostId} />
             </Grid>
           ))}
         </Grid>

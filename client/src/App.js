@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Container, AppBar, Typography, Grid, Grow } from '@material-ui/core';
 import memories from 'images/memories.png';
 import Posts from 'components/Posts/Posts.js';
@@ -7,6 +7,7 @@ import useStyles from './styles';
 
 const App = () => {
   const classes = useStyles();
+  const [selectedPostId, setSelectedPostId] = useState(null);
 
   return (
     <Container maxWidth="lg">
@@ -29,10 +30,10 @@ const App = () => {
             alignItems="center"
             spacing={4}>
             <Grid item xs={12} sm={7}>
-              <Posts />
+              <Posts setSelectedPostId={setSelectedPostId} />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form />
+              <Form selectedPostId={selectedPostId} setSelectedPostId={setSelectedPostId} />
             </Grid>
           </Grid>
         </Container>

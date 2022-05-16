@@ -16,11 +16,11 @@ import moment from 'moment';
 
 const Post = (props) => {
   const postData = props.post;
+  const setSelectedPostId = props.setSelectedPostId;
   const classes = useStyles();
   const dispatch = useDispatch();
   const loading = useSelector(common.loading);
   const post = useSelector(posts.postList);
-  console.log(`halo postData?.tags:`, postData);
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -38,7 +38,9 @@ const Post = (props) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: 'white' }} size="small" onClick={() => {}}>
+        <Button style={{ color: 'white' }} size="small" onClick={() => {
+          setSelectedPostId(postData._id);
+        }}>
           <MoreHoriz fontSize="medium" />
         </Button>
       </div>
