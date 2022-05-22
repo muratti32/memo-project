@@ -13,15 +13,13 @@ import { ThumbUpAlt, Delete, MoreHoriz } from '@material-ui/icons';
 
 import useStyles from './styles';
 import moment from 'moment';
+import { deletePost } from '../thunk';
 
 const Post = (props) => {
   const postData = props.post;
   const setSelectedPostId = props.setSelectedPostId;
   const classes = useStyles();
   const dispatch = useDispatch();
-  const loading = useSelector(common.loading);
-  const post = useSelector(posts.postList);
-  console.log(`halo postDataxxx:`, postData);
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -70,7 +68,12 @@ const Post = (props) => {
         <Button size="small" color="primary" onClick={() => {}}>
           <ThumbUpAlt fontSize="small" /> Like {postData.likeCount}
         </Button>
-        <Button size="small" color="primary" onClick={() => {}}>
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(deletePost(postData._id));
+          }}>
           <Delete fontSize="small" />
         </Button>
       </CardActions>

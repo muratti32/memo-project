@@ -31,9 +31,23 @@ export const updatePost = async (req, res) => {
       new: true,
     });
 
-    console.log(`halo result:`, result);
     res.status(200).json(result);
   } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+};
+
+export const deletePost = async (req, res) => {
+  try {
+    const { id: _id } = req.params;
+    if (mongoose.isValidObjectId(_id)) {
+      const result = await PostMessage.findByIdAndDelete(_id);
+      res.status(200).json(result);
+    } else {
+      res.status(404).send('No Post with that ID');
+    }
+  } catch (error) {
+    console.log(`halo delete error:`);
     res.status(409).json({ message: error.message });
   }
 };

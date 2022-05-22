@@ -22,7 +22,6 @@ const Form = ({ selectedPostId, setSelectedPostId }) => {
 
   useEffect(() => {
     if (selectedPostId) {
-      console.log(`halo asdfasdfasdfasdfas:`);
       const post = postList.find((post) => post._id === selectedPostId);
       if (post) setPostData(post);
     }

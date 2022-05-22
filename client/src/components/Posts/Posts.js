@@ -11,7 +11,6 @@ const Posts = ({ setSelectedPostId }) => {
   const dispatch = useDispatch();
   const postList = useSelector(posts.postList);
 
-  console.log(`halo postList:`, postList);
   useEffect(() => {
     dispatch(getPosts('halo'));
   }, [dispatch]);
