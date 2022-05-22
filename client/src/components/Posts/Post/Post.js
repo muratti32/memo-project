@@ -21,6 +21,7 @@ const Post = (props) => {
   const dispatch = useDispatch();
   const loading = useSelector(common.loading);
   const post = useSelector(posts.postList);
+  console.log(`halo postDataxxx:`, postData);
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -38,9 +39,12 @@ const Post = (props) => {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button style={{ color: 'white' }} size="small" onClick={() => {
-          setSelectedPostId(postData._id);
-        }}>
+        <Button
+          style={{ color: 'white' }}
+          size="small"
+          onClick={() => {
+            setSelectedPostId(postData._id);
+          }}>
           <MoreHoriz fontSize="medium" />
         </Button>
       </div>
@@ -54,7 +58,7 @@ const Post = (props) => {
         gutterBottom
         variant="h5"
         component="h2">
-        {post.title}
+        {postData.title}
       </Typography>
 
       <CardContent>
