@@ -22,6 +22,7 @@ export const createPost = createAsyncThunk(
     try {
       thunkAPI.dispatch(setLoading(true));
       const result = await api.createPost(post);
+      thunkAPI.dispatch(getPosts());
       thunkAPI.dispatch(setLoading(false));
       return null;
     } catch (error) {
@@ -37,10 +38,25 @@ export const updatePost = createAsyncThunk(
     try {
       thunkAPI.dispatch(setLoading(true));
       const { data } = await api.updatePost(post);
-      console.log(`halo data:`, data);
       if (data) {
         thunkAPI.dispatch(updatePostReducer(data));
       }
+      thunkAPI.dispatch(setLoading(false));
+      return null;
+    } catch (error) {
+      thunkAPI.dispatch(setError(error));
+      return Promise.reject();
+    }
+  },
+);
+
+export const deletePost = createAsyncThunk(
+  'deletePost',
+  async (id, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const result = await api.deletePost(id);
+      thunkAPI.dispatch(getPosts());
       thunkAPI.dispatch(setLoading(false));
       return null;
     } catch (error) {
