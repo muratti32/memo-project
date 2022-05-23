@@ -65,3 +65,20 @@ export const deletePost = createAsyncThunk(
     }
   },
 );
+
+export const likePostThunk = createAsyncThunk(
+  'likePost',
+  async (id, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(setLoading(true));
+      const result = await api.likePost(id);
+      console.log(`halo result:`, result);
+      thunkAPI.dispatch(getPosts());
+      thunkAPI.dispatch(setLoading(false));
+      return null;
+    } catch (error) {
+      thunkAPI.dispatch(setError(error));
+      return Promise.reject();
+    }
+  },
+);

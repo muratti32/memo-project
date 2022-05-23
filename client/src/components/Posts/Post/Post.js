@@ -13,7 +13,7 @@ import { ThumbUpAlt, Delete, MoreHoriz } from '@material-ui/icons';
 
 import useStyles from './styles';
 import moment from 'moment';
-import { deletePost } from '../thunk';
+import { deletePost, likePostThunk } from '../thunk';
 
 const Post = (props) => {
   const postData = props.post;
@@ -60,13 +60,19 @@ const Post = (props) => {
       </Typography>
 
       <CardContent>
-        <Typography variant="h5" className={classes.title} gutterBottom>
+        <Typography variant="body2" color="textSecondary" component={'p'}>
           {postData.message}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary" onClick={() => {}}>
-          <ThumbUpAlt fontSize="small" /> Like {postData.likeCount}
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            dispatch(likePostThunk(postData._id));
+          }}>
+          <ThumbUpAlt fontSize="small" />
+          Like {postData.likeCount}
         </Button>
         <Button
           size="small"

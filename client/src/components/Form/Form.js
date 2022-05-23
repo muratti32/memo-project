@@ -82,7 +82,9 @@ const Form = ({ selectedPostId, setSelectedPostId }) => {
           variant="outlined"
           label="Tags"
           fullWidth
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(',') })
+          }
           value={postData.tags}
         />
         <div className={classes.fileInput}>
