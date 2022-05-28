@@ -14,6 +14,9 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 
 app.use('/posts', postsRouter);
 
+app.get('/', (req, res) => {
+  res.status(200).send('Halo from Memo Project Api');
+});
 const PORT = process.env.PORT || 5001;
 
 mongoose
