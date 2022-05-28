@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { Container, AppBar, Typography, Grid, Grow } from '@material-ui/core';
 import memories from 'images/memories.png';
 import Posts from 'components/Posts/Posts.js';
@@ -25,6 +25,7 @@ const App = () => {
       <Grow in>
         <Container>
           <Grid
+            className={classes.mainContainer}
             container
             justifyContent="space-between"
             alignItems="center"
@@ -32,8 +33,11 @@ const App = () => {
             <Grid item xs={12} sm={7}>
               <Posts setSelectedPostId={setSelectedPostId} />
             </Grid>
-            <Grid item xs={12} sm={4}>
-              <Form selectedPostId={selectedPostId} setSelectedPostId={setSelectedPostId} />
+            <Grid className={classes.form} item xs={12} sm={4}>
+              <Form
+                selectedPostId={selectedPostId}
+                setSelectedPostId={setSelectedPostId}
+              />
             </Grid>
           </Grid>
         </Container>
