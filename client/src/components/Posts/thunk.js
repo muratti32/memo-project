@@ -21,7 +21,7 @@ export const createPost = createAsyncThunk(
   async (post, thunkAPI) => {
     try {
       thunkAPI.dispatch(setLoading(true));
-      const result = await api.createPost(post);
+      await api.createPost(post);
       thunkAPI.dispatch(getPosts());
       thunkAPI.dispatch(setLoading(false));
       return null;
@@ -55,7 +55,7 @@ export const deletePost = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       thunkAPI.dispatch(setLoading(true));
-      const result = await api.deletePost(id);
+      await api.deletePost(id);
       thunkAPI.dispatch(getPosts());
       thunkAPI.dispatch(setLoading(false));
       return null;

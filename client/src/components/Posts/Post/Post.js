@@ -6,9 +6,8 @@ import {
   CardMedia,
   Typography,
 } from '@material-ui/core';
-import { common, posts } from 'components/store/selectors';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { ThumbUpAlt, Delete, MoreHoriz } from '@material-ui/icons';
 
 import useStyles from './styles';
